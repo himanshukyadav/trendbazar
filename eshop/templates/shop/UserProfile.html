@@ -1,0 +1,147 @@
+{% extends 'shop/layouts/main.html' %}
+
+{% load static %}
+
+{% block title %}
+User Profile | MultiZone
+{% endblock title %}
+
+{% block content %}
+<div class="container" style="margin-top:70px;min-height:600px;">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="mb-3"> My Profile</h4>
+            <hr style="border-color:#b8bfc2;">
+            {% include 'shop/inc/message.html' %}
+        </div>
+    </div>
+    
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Left Column - Profile Form -->
+                <div class="col-md-6 sty">
+                    <form method="post" action="" class="frm">
+                        {% csrf_token %}
+                        <div class="text-center mb-4">
+                            <img src="{% static 'Images/user-avatar.png' %}" alt="Profile Picture" class="rounded-circle" width="120" height="120">
+                            <div class="mt-2">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Change Photo</a>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" value="John Doe">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" value="john@example.com" readonly>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" value="+1 (555) 123-4567">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label">Address</label>
+                            <textarea class="form-control" rows="3">123 Main St, Anytown, USA</textarea>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-dark">Update Profile</button>
+                            {% comment %} <a href="{% url 'change_password' %}" class="btn btn-outline-primary">Change Password</a> {% endcomment %}
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Right Column - Order History -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-dark text-white">
+                            <h5 class="mb-0">Order History</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Order #12345</h6>
+                                        <small class="text-success">Completed</small>
+                                    </div>
+                                    <p class="mb-1">3 items • $125.99</p>
+                                    <small>Delivered on May 15, 2023</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Order #12344</h6>
+                                        <small class="text-warning">Shipped</small>
+                                    </div>
+                                    <p class="mb-1">2 items • $89.50</p>
+                                    <small>Expected May 20, 2023</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Order #12343</h6>
+                                        <small class="text-danger">Cancelled</small>
+                                    </div>
+                                    <p class="mb-1">1 item • $45.00</p>
+                                    <small>Cancelled on May 10, 2023</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm mt-4">
+                        <div class="card-header bg-dark text-white">
+                            <h5 class="mb-0">Account Actions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-danger">Delete Account</a>
+                                <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+.sty {
+    display: flex;
+}
+.frm {
+    min-width: 500px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+.card {
+    border-radius: 5px;
+}
+.list-group-item {
+    margin-bottom: 10px;
+    border-radius: 5px !important;
+}
+.btn-outline-primary {
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+@media screen and (max-width: 900px) {
+    .frm {
+        min-width: 100%;
+    }
+    .sty {
+        flex-direction: column;
+    }
+}
+</style>
+{% endblock content %}
