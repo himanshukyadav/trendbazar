@@ -15,7 +15,7 @@ MultiZone | Online Shopping
                     <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{% url 'collections' %}">Collections</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'collections' products.category.name  %}">Products</a></li>
+                    {% comment %} <li class="breadcrumb-item"><a href="{% url 'collections' products.category.name  %}">Products</a></li> {% endcomment %}
                     <li class="breadcrumb-item active" aria-current="page">{{products}}</li>
                     </ol>
                 </nav>
